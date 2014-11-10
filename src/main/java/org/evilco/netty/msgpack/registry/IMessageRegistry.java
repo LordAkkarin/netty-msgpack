@@ -21,7 +21,7 @@ import org.evilco.netty.msgpack.error.MessageRegistryException;
  * @author Johannes Donath <johannesd@evil-co.com>
  * @copyright Copyright (C) 2014 Evil-Co <http://www.evil-co.com>
  */
-public interface IMessageRegistry<T extends Object> {
+public interface IMessageRegistry<T> {
 
 	/**
 	 * Searches a message identifier based on a type.

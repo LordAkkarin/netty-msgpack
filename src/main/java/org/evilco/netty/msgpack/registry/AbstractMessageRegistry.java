@@ -25,7 +25,7 @@ import org.evilco.netty.msgpack.error.UnknownMessageException;
  * @author Johannes Donath <johannesd@evil-co.com>
  * @copyright Copyright (C) 2014 Evil-Co <http://www.evil-co.com>
  */
-public abstract class AbstractMessageRegistry<T extends Object> implements IMessageRegistry<T> {
+public abstract class AbstractMessageRegistry<T> implements IMessageRegistry<T> {
 
 	/**
 	 * Stores the registry.
