@@ -63,7 +63,7 @@ public class MessageCodec extends ByteToMessageCodec<Object> {
 		Preconditions.checkNotNull (msg, "msg");
 
 		// search message identifier
-		short identifier = this.getRegistry ().getMessageID (msg);
+		short identifier = this.getRegistry ().getMessageID (msg.getClass ());
 
 		// send identifier
 		out.writeShort (identifier);
