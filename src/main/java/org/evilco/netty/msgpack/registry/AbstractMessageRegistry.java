@@ -30,7 +30,7 @@ public abstract class AbstractMessageRegistry<T extends Object> implements IMess
 	/**
 	 * Stores the registry.
 	 */
-	private BiMap<Short, Class<T>> registry = HashBiMap.create ();
+	private BiMap<Short, Class<? extends T>> registry = HashBiMap.create ();
 
 	/**
 	 * {@inheritDoc}
