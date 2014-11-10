@@ -63,4 +63,13 @@ public abstract class AbstractMessageRegistry<T extends Object> implements IMess
 		// get registered type
 		return this.registry.get (messageID);
 	}
+
+	/**
+	 * Registers a message type.
+	 * @param messageID The message identifier.
+	 * @param messageType The message type.
+	 */
+	public void registerMessage (short messageID, @NonNull Class<T> messageType) {
+		this.registry.put (messageID, messageType);
+	}
 }
