@@ -29,7 +29,7 @@ public interface IMessageRegistry<T extends Object> {
 	 * @return The identifier.
 	 * @throws org.evilco.netty.msgpack.error.MessageRegistryException Occurs when a message type could not be localized.
 	 */
-	public short getMessageID (Class<T> messageType) throws MessageRegistryException;
+	public short getMessageID (Class<? extends T> messageType) throws MessageRegistryException;
 
 	/**
 	 * Shorthand method for {@link org.evilco.netty.msgpack.registry.IMessageRegistry#getMessageID(Class)}.
@@ -43,5 +43,5 @@ public interface IMessageRegistry<T extends Object> {
 	 * @return The message type.
 	 * @throws org.evilco.netty.msgpack.error.MessageRegistryException Occurs when a message type could not be localized.
 	 */
-	public Class<T> getMessageType (short messageID) throws MessageRegistryException;
+	public Class<? extends T> getMessageType (short messageID) throws MessageRegistryException;
 }

@@ -36,7 +36,7 @@ public abstract class AbstractMessageRegistry<T extends Object> implements IMess
 	 * {@inheritDoc}
 	 */
 	@Override
-	public short getMessageID (@NonNull Class<T> messageType) throws MessageRegistryException {
+	public short getMessageID (@NonNull Class<? extends T> messageType) throws MessageRegistryException {
 		// verify existence
 		if (this.registry.inverse ().containsKey (messageType)) throw new UnknownMessageException ("Could not find registration for type " + messageType.getName ());
 
@@ -56,7 +56,7 @@ public abstract class AbstractMessageRegistry<T extends Object> implements IMess
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Class<T> getMessageType (short messageID) throws MessageRegistryException {
+	public Class<? extends T> getMessageType (short messageID) throws MessageRegistryException {
 		// verify existence
 		if (this.registry.containsKey (messageID)) throw new UnknownMessageException ("Could not find registration for identifier " + messageID);
 
@@ -69,7 +69,15 @@ public abstract class AbstractMessageRegistry<T extends Object> implements IMess
 	 * @param messageID The message identifier.
 	 * @param messageType The message type.
 	 */
-	protected void registerMessage (short messageID, @NonNull Class<T> messageType) {
+	protected void registerMessage (short messageID, @NonNull Class<? extends T> messageType) {
 		this.registry.put (messageID, messageType);
+	}
+
+	/**
+	 * Alias for {@link org.evilco.netty.msgpack.registry.AbstractMessageRegistry#registerMessage(short, Class)}
+	 * @see {@link org.evilco.netty.msgpack.registry.AbstractMessageRegistry#registerMessage(short, Class)}
+	 */
+	protected void registerMessage (int messageID, @NonNull Class<? extends T> messageType) {
+		this.registerMessage (((short) messageID), messageType);
 	}
 }
