@@ -21,7 +21,7 @@ import org.evilco.netty.msgpack.error.MessageRegistryException;
  * @author Johannes Donath <johannesd@evil-co.com>
  * @copyright Copyright (C) 2014 Evil-Co <http://www.evil-co.com>
  */
-public interface IMessageRegistry<T> {
+public interface IMessageRegistry {
 
 	/**
 	 * Searches a message identifier based on a type.
@@ -29,7 +29,7 @@ public interface IMessageRegistry<T> {
 	 * @return The identifier.
 	 * @throws org.evilco.netty.msgpack.error.MessageRegistryException Occurs when a message type could not be localized.
 	 */
-	public short getMessageID (Class<? extends T> messageType) throws MessageRegistryException;
+	public short getMessageID (Class<?> messageType) throws MessageRegistryException;
 
 	/**
 	 * Searches a message type based on an identifier.
@@ -37,5 +37,5 @@ public interface IMessageRegistry<T> {
 	 * @return The message type.
 	 * @throws org.evilco.netty.msgpack.error.MessageRegistryException Occurs when a message type could not be localized.
 	 */
-	public Class<? extends T> getMessageType (short messageID) throws MessageRegistryException;
+	public Class<?> getMessageType (short messageID) throws MessageRegistryException;
 }

@@ -25,18 +25,18 @@ import org.evilco.netty.msgpack.error.UnknownMessageException;
  * @author Johannes Donath <johannesd@evil-co.com>
  * @copyright Copyright (C) 2014 Evil-Co <http://www.evil-co.com>
  */
-public abstract class AbstractMessageRegistry<T> implements IMessageRegistry<T> {
+public abstract class AbstractMessageRegistry implements IMessageRegistry {
 
 	/**
 	 * Stores the registry.
 	 */
-	private BiMap<Short, Class<? extends T>> registry = HashBiMap.create ();
+	private BiMap<Short, Class<?>> registry = HashBiMap.create ();
 
 	/**
 	 * {@inheritDoc}
 	 */
 	@Override
-	public short getMessageID (@NonNull Class<? extends T> messageType) throws MessageRegistryException {
+	public short getMessageID (@NonNull Class<?> messageType) throws MessageRegistryException {
 		// verify existence
 		if (this.registry.inverse ().containsKey (messageType)) throw new UnknownMessageException ("Could not find registration for type " + messageType.getName ());
 
@@ -48,7 +48,7 @@ public abstract class AbstractMessageRegistry<T> implements IMessageRegistry<T> 
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Class<? extends T> getMessageType (short messageID) throws MessageRegistryException {
+	public Class<?> getMessageType (short messageID) throws MessageRegistryException {
 		// verify existence
 		if (this.registry.containsKey (messageID)) throw new UnknownMessageException ("Could not find registration for identifier " + messageID);
 
@@ -61,7 +61,7 @@ public abstract class AbstractMessageRegistry<T> implements IMessageRegistry<T> 
 	 * @param messageID The message identifier.
 	 * @param messageType The message type.
 	 */
-	protected void registerMessage (short messageID, @NonNull Class<? extends T> messageType) {
+	protected void registerMessage (short messageID, @NonNull Class<?> messageType) {
 		this.registry.put (messageID, messageType);
 	}
 
@@ -69,7 +69,7 @@ public abstract class AbstractMessageRegistry<T> implements IMessageRegistry<T> 
 	 * Alias for {@link org.evilco.netty.msgpack.registry.AbstractMessageRegistry#registerMessage(short, Class)}
 	 * @see {@link org.evilco.netty.msgpack.registry.AbstractMessageRegistry#registerMessage(short, Class)}
 	 */
-	protected void registerMessage (int messageID, @NonNull Class<? extends T> messageType) {
+	protected void registerMessage (int messageID, @NonNull Class<?> messageType) {
 		this.registerMessage (((short) messageID), messageType);
 	}
 }
