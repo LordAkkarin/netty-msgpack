@@ -28,7 +28,6 @@ import java.util.List;
  * @author Johannes Donath <johannesd@evil-co.com>
  * @copyright Copyright (C) 2014 Evil-Co <http://www.evil-co.com>
  */
-@AllArgsConstructor
 public class MessageCodec<T extends Object> extends ByteToMessageCodec<T> {
 
 	/**
@@ -46,6 +45,14 @@ public class MessageCodec<T extends Object> extends ByteToMessageCodec<T> {
 	@Setter (AccessLevel.PROTECTED)
 	@NonNull
 	private MessagePack messagePack = new MessagePack ();
+
+	/**
+	 * Constructs a new MessageCodec instance.
+	 * @param messageRegistry The registry.
+	 */
+	public MessageCodec (IMessageRegistry<T> messageRegistry) {
+		this.setRegistry (messageRegistry);
+	}
 
 	/**
 	 * {@inheritDoc}
