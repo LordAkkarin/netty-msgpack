@@ -38,7 +38,7 @@ public abstract class AbstractMessageRegistry implements IMessageRegistry {
 	@Override
 	public short getMessageID (@NonNull Class<?> messageType) throws MessageRegistryException {
 		// verify existence
-		if (this.registry.inverse ().containsKey (messageType)) throw new UnknownMessageException ("Could not find registration for type " + messageType.getName ());
+		if (!this.registry.inverse ().containsKey (messageType)) throw new UnknownMessageException ("Could not find registration for type " + messageType.getName ());
 
 		// get registered identifier
 		return this.registry.inverse ().get (messageType);
@@ -50,7 +50,7 @@ public abstract class AbstractMessageRegistry implements IMessageRegistry {
 	@Override
 	public Class<?> getMessageType (short messageID) throws MessageRegistryException {
 		// verify existence
-		if (this.registry.containsKey (messageID)) throw new UnknownMessageException ("Could not find registration for identifier " + messageID);
+		if (!this.registry.containsKey (messageID)) throw new UnknownMessageException ("Could not find registration for identifier " + messageID);
 
 		// get registered type
 		return this.registry.get (messageID);
