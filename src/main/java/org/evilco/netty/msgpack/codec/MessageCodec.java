@@ -36,7 +36,7 @@ public class MessageCodec extends ByteToMessageCodec<Object> {
 	@Getter
 	@Setter
 	@NonNull
-	private IMessageRegistry<?> registry;
+	private IMessageRegistry registry;
 
 	/**
 	 * Stores the msgpack instance.
@@ -50,7 +50,7 @@ public class MessageCodec extends ByteToMessageCodec<Object> {
 	 * Constructs a new MessageCodec instance.
 	 * @param messageRegistry The registry.
 	 */
-	public MessageCodec (IMessageRegistry<?> messageRegistry) {
+	public MessageCodec (IMessageRegistry messageRegistry) {
 		this.setRegistry (messageRegistry);
 	}
 
