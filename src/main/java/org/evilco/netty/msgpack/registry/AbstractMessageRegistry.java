@@ -48,6 +48,14 @@ public abstract class AbstractMessageRegistry<T extends Object> implements IMess
 	 * {@inheritDoc}
 	 */
 	@Override
+	public short getMessageID (@NonNull Object message) throws MessageRegistryException {
+		return this.getMessageID (message.getClass ());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Class<T> getMessageType (short messageID) throws MessageRegistryException {
 		// verify existence
 		if (this.registry.containsKey (messageID)) throw new UnknownMessageException ("Could not find registration for identifier " + messageID);

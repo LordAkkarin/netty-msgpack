@@ -32,6 +32,12 @@ public interface IMessageRegistry<T extends Object> {
 	public short getMessageID (Class<T> messageType) throws MessageRegistryException;
 
 	/**
+	 * Shorthand method for {@link org.evilco.netty.msgpack.registry.IMessageRegistry#getMessageID(Class)}.
+	 * @see {@link org.evilco.netty.msgpack.registry.IMessageRegistry#getMessageID(Class)}
+	 */
+	public short getMessageID (Object message) throws MessageRegistryException;
+
+	/**
 	 * Searches a message type based on an identifier.
 	 * @param messageID The message identifier.
 	 * @return The message type.
