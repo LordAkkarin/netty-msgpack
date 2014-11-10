@@ -69,7 +69,7 @@ public abstract class AbstractMessageRegistry<T extends Object> implements IMess
 	 * @param messageID The message identifier.
 	 * @param messageType The message type.
 	 */
-	public void registerMessage (short messageID, @NonNull Class<T> messageType) {
+	protected void registerMessage (short messageID, @NonNull Class<T> messageType) {
 		this.registry.put (messageID, messageType);
 	}
 }
