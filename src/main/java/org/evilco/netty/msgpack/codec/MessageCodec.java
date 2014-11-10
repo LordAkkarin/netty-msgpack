@@ -14,6 +14,7 @@
  */
 package org.evilco.netty.msgpack.codec;
 
+import com.google.common.base.Preconditions;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.ByteToMessageCodec;
@@ -52,7 +53,7 @@ public class MessageCodec<T extends Object> extends ByteToMessageCodec<T> {
 	@Override
 	protected void encode (ChannelHandlerContext ctx, T msg, ByteBuf out) throws Exception {
 		// verify argument
-		if (msg == null) throw new NullPointerException ("msg");
+		Preconditions.checkNotNull (msg, "msg");
 
 		// search message identifier
 		short identifier = this.getRegistry ().getMessageID (msg);
