@@ -68,9 +68,9 @@
 
 	<!-- SCM -->
 	<scm>
-		<url>https://github.com/LordAkkarin/Morpheus</url>
-		<connection>scm:git:git://github.com/LordAkkarin/Morpheus.git</connection>
-		<developerConnection>scm:git:git://git@github.com/LordAkkarin/Morpheus.git</developerConnection>
+		<url>https://github.com/LordAkkarin/netty-msgpack</url>
+		<connection>scm:git:git://github.com/LordAkkarin/netty-msgpack.git</connection>
+		<developerConnection>scm:git:git://git@github.com/LordAkkarin/netty-msgpack.git</developerConnection>
 		<tag>master</tag>
 	</scm>
 
@@ -81,7 +81,6 @@
 
 		<!-- Versions -->
 		<java.version>1.7</java.version>
-		<guava.version>18.0</guava.version>
 		<lombok.version>1.14.8</lombok.version>
 		<msgpack.version>0.6.11</msgpack.version>
 		<netty.version>5.0.0.Alpha1</netty.version>
@@ -89,13 +88,6 @@
 
 	<!-- Dependencies -->
 	<dependencies>
-		<!-- Guava -->
-		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
-			<version>${guava.version}</version>
-		</dependency>
-
 		<!-- Lombok -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -114,7 +106,12 @@
 		<!-- Netty -->
 		<dependency>
 			<groupId>io.netty</groupId>
-			<artifactId>netty-all</artifactId>
+			<artifactId>netty-buffer</artifactId>
+			<version>${netty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-codec</artifactId>
 			<version>${netty.version}</version>
 		</dependency>
 	</dependencies>
