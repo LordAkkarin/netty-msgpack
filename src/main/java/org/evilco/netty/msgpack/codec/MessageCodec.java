@@ -28,7 +28,7 @@ import java.util.List;
  * @author Johannes Donath <johannesd@evil-co.com>
  * @copyright Copyright (C) 2014 Evil-Co <http://www.evil-co.com>
  */
-public class MessageCodec<T extends Object> extends ByteToMessageCodec<T> {
+public class MessageCodec extends ByteToMessageCodec<Object> {
 
 	/**
 	 * Stores the active message registry.
@@ -36,7 +36,7 @@ public class MessageCodec<T extends Object> extends ByteToMessageCodec<T> {
 	@Getter
 	@Setter
 	@NonNull
-	private IMessageRegistry<T> registry;
+	private IMessageRegistry<?> registry;
 
 	/**
 	 * Stores the msgpack instance.
@@ -50,7 +50,7 @@ public class MessageCodec<T extends Object> extends ByteToMessageCodec<T> {
 	 * Constructs a new MessageCodec instance.
 	 * @param messageRegistry The registry.
 	 */
-	public MessageCodec (IMessageRegistry<T> messageRegistry) {
+	public MessageCodec (IMessageRegistry<?> messageRegistry) {
 		this.setRegistry (messageRegistry);
 	}
 
@@ -58,7 +58,7 @@ public class MessageCodec<T extends Object> extends ByteToMessageCodec<T> {
 	 * {@inheritDoc}
 	 */
 	@Override
-	protected void encode (ChannelHandlerContext ctx, T msg, ByteBuf out) throws Exception {
+	protected void encode (ChannelHandlerContext ctx, Object msg, ByteBuf out) throws Exception {
 		// verify argument
 		Preconditions.checkNotNull (msg, "msg");
 
@@ -81,7 +81,7 @@ public class MessageCodec<T extends Object> extends ByteToMessageCodec<T> {
 		short identifier = in.readShort ();
 
 		// search message type
-		Class<? extends T> type = this.getRegistry ().getMessageType (identifier);
+		Class<?> type = this.getRegistry ().getMessageType (identifier);
 
 		// decode message
 		out.add (this.messagePack.read (in.array (), type));
