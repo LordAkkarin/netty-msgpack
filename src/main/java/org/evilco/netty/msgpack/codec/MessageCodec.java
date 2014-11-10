@@ -81,7 +81,7 @@ public class MessageCodec<T extends Object> extends ByteToMessageCodec<T> {
 		short identifier = in.readShort ();
 
 		// search message type
-		Class<T> type = this.getRegistry ().getMessageType (identifier);
+		Class<? extends T> type = this.getRegistry ().getMessageType (identifier);
 
 		// decode message
 		out.add (this.messagePack.read (in.array (), type));
