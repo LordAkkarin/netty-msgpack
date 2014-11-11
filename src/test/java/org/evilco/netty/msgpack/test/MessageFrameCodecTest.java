@@ -16,9 +16,6 @@ package org.evilco.netty.msgpack.test;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.embedded.EmbeddedChannel;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
 import org.evilco.netty.msgpack.codec.MessageFrameCodec;
 import org.junit.Assert;
 import org.junit.Before;
