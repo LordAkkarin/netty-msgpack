@@ -74,6 +74,19 @@
 		<tag>master</tag>
 	</scm>
 
+	<!-- Distribution -->
+	<distributionManagement>
+		<repository>
+			<id>basket</id>
+			<url>http://basket.cindyscats.com/content/repositories/releases/</url>
+		</repository>
+
+		<snapshotRepository>
+			<id>basket</id>
+			<url>http://basket.cindyscats.com/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<!-- Global Properties -->
 	<properties>
 		<!-- Source Encoding -->
