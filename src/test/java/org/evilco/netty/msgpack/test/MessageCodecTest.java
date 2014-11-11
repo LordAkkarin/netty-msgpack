@@ -15,11 +15,9 @@
 package org.evilco.netty.msgpack.test;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.embedded.EmbeddedChannel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import org.evilco.netty.msgpack.codec.MessageCodec;
 import org.evilco.netty.msgpack.registry.AbstractMessageRegistry;
 import org.junit.Assert;
