@@ -100,7 +100,7 @@ public class MessageCodecTest {
 		MessagePack messagePack = new MessagePack ();
 
 		// create ByteBuf
-		ByteBuf buffer = Unpooled.buffer ();
+		ByteBuf buffer = this.channel.alloc ().buffer ();
 
 		// generate a message
 		buffer.writeShort (0x00);
