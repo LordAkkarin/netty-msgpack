@@ -83,7 +83,11 @@ public class MessageCodec extends ByteToMessageCodec<Object> {
 		// search message type
 		Class<?> type = this.getRegistry ().getMessageType (identifier);
 
+		// read data
+		byte[] data = new byte[in.readableBytes ()];
+		in.readBytes (data);
+
 		// decode message
-		out.add (this.messagePack.read (in.array (), type));
+		out.add (this.messagePack.read (data, type));
 	}
 }
